@@ -1,0 +1,21 @@
+﻿@model TeachersShowAllViewModel
+
+<h1>@ViewBag.PageTitle</h1>
+
+<table class="table table-responsive table-hover">
+    <tr>
+        <th>Teacher</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var teacher in Model.Teachers)
+    {
+    <tr>
+        <td>@teacher.Value</td>
+        <td>
+            <a href="/Teachers/@teacher.Id"
+               class="btn btn-outline-info">Details</a>
+        </td>
+    </tr>
+    }
+</table>
+<a href="/Home" class="btn btn-info">Back</a>

@@ -21,6 +21,26 @@ app.UseRouting();
 app.UseAuthorization();
 
 //custom routes come first
+app.MapControllerRoute(
+    name: "ShowStudentCourses",
+    pattern: "/Students/{id:int}/Courses",
+    defaults: new { Controller = "Students", Action = "ShowStudentCourses" }
+    );
+app.MapControllerRoute(
+    name: "TeacherDetail",
+    pattern: "/Teachers/{id:int}",
+    defaults: new { Controller = "Teachers", Action = "Details" }
+    );
+app.MapControllerRoute(
+    name: "AllTeachers",
+    pattern: "/Teachers",
+    defaults: new { Controller = "Teachers", Action = "ShowAll" }
+    );
+app.MapControllerRoute(
+    name: "AllStudents",
+    pattern: "/Students",
+    defaults: new { Controller = "Students", Action = "ShowAll" }
+    );
 // /courses => CoursesController => Courses method
 app.MapControllerRoute(
     name: "AllCourses",
