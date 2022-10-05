@@ -1,0 +1,17 @@
+﻿@model CoursesCoursesViewModel
+
+<h1>@ViewBag.Courses</h1>
+@* loop over courses and show them *@
+<table class="table table-responsive table-hover">
+    <tr>
+        <th>Course</th>
+        <th>Action</th>
+    </tr>
+    @foreach(var course in Model.Courses)
+    { 
+        <tr>
+            <td>@course.Value</td>
+            <td><a href="/Courses/@course.Id/students" class="btn btn-outline-info">Students</a></td>
+        </tr>
+    }
+</table>

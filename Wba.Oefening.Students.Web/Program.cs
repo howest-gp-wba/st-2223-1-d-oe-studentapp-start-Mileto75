@@ -20,6 +20,19 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+//custom routes come first
+// /courses => CoursesController => Courses method
+app.MapControllerRoute(
+    name: "AllCourses",
+    pattern: "/Courses",
+    defaults: new {Controller = "Courses", Action = "Courses" }
+    );
+//default route comes last
+// Courses/1/Students => Course:CourseStudents
+app.MapControllerRoute(
+    name: "StudentsInCourse",
+    pattern: "Courses/{courseId:int}/Students",
+    defaults: new { Controller = "Courses", Action = "CourseStudents" });
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
